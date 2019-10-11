@@ -34,15 +34,14 @@
   <script src="./tool/config.js"></script>
   
   <script>
-  $('.input_sub').on('click',function(){
-    var txt = $('.input_txt').val();
-    var pass = $('.input_pass').val();
-    if(txt.trim() === '' || pass.trim() === ''){
-      alert('请填写完整的信息~');
-      return;
-    }
-
-    // 发送请求
+   $('.input_sub').on('click',function(){
+     var txt = $('input_txt').val();
+     var pass = $('.input_pass').val();
+     if(txt.trim() == '' || pass.trim() === ''){
+       alert('请将信息填写完整');
+       return;
+     }
+    //  发送请求
     $.ajax({
       type:'post',
       url:USER_LOGIN,
@@ -51,15 +50,15 @@
         password:pass
       },
       success:function(res){
-        if(res.code === 200) {
+        if(res.code === 200){
+          console.log('请求成功');
           location.href = './index.html';
         }else{
-          alert('密码或者用户名错误');
+          alert('用户名或者密码填写错误');
         }
       }
-      
     })
-  })
+   })
   </script>
 </body>
 </html>
